@@ -1,7 +1,7 @@
 def substrings(words, dictionary)
   
   #Transform words argument into an array to iterate through
-  words_arr = words.split(" ")
+  words_arr = words.downcase.split(" ")
   
   #Iterate through each word in words
   result = words_arr.map do |word|
