@@ -1,11 +1,18 @@
 def substrings(words, dictionary)
+  
+  #Transform words argument into an array to iterate through
   words_arr = words.split(" ")
+  
+  #Iterate through each word in words
   result = words_arr.map do |word|
+    #Compare each word in dictionary to words in words arguement 
     dictionary.map do |dict_word|
       word.scan(dict_word)
     end
   end
-
+  
+  #Final result was a multi-nested array, hence flatten, then reduce
+  #with hash to count each repetetion
   final_result = result.flatten.reduce(Hash.new(0)) do |word, repetetions|
     word[repetetions] += 1
     word
@@ -16,16 +23,11 @@ def substrings(words, dictionary)
 end
 
 
-words1 = "Howdy partner, sit down! How's it going?"
+words = "Howdy partner, sit down! How's it going?"
 
-dictionary1 = ["below","down","go","going","horn","how","howdy","it","i",
+dictionary = ["below","down","go","going","horn","how","howdy","it","i",
 "low","own","part","partner","sit"]
 
 
 
-substrings(words1, dictionary1)
-
-# result.flatten.reduce(Hash.new(0)) do |word, repetetions|
-#   word[repetetions] += 1
-#   word
-# end
+substrings(words, dictionary)
